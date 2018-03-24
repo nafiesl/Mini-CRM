@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = ['name', 'email', 'logo', 'creator_id'];
+    protected $fillable = ['name', 'email', 'logo', 'address', 'website', 'creator_id'];
 
     public function nameLink()
     {

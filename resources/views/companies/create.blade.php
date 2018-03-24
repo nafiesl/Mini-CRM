@@ -11,6 +11,8 @@
             <div class="panel-body">
                 {!! FormField::text('name', ['required' => true, 'label' => trans('company.name')]) !!}
                 {!! FormField::email('email', ['required' => true, 'label' => trans('company.email')]) !!}
+                {!! FormField::text('website', ['label' => trans('company.website')]) !!}
+                {!! FormField::textarea('address', ['label' => trans('company.address')]) !!}
             </div>
             <div class="panel-footer">
                 {!! Form::submit(trans('company.create'), ['class' => 'btn btn-success']) !!}

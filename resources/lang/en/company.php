@@ -25,6 +25,8 @@ return [
     'undeleteable'   => 'Company data cannot be deleted.',
 
     // Attributes
-    'name'  => 'Company Name',
-    'email' => 'Email',
+    'name'    => 'Company Name',
+    'email'   => 'Email',
+    'website' => 'Website',
+    'address' => 'Address',
 ];

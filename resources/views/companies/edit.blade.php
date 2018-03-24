@@ -15,6 +15,10 @@
                     <p>{{ $company->name }}</p>
                     <label class="control-label">{{ trans('company.email') }}</label>
                     <p>{{ $company->email }}</p>
+                    <label class="control-label">{{ trans('company.website') }}</label>
+                    <p>{{ $company->website }}</p>
+                    <label class="control-label">{{ trans('company.address') }}</label>
+                    <p>{{ $company->address }}</p>
                     {!! $errors->first('company_id', '<span class="form-error small">:message</span>') !!}
                 </div>
                 <hr style="margin:0">
@@ -41,6 +45,8 @@
             <div class="panel-body">
                 {!! FormField::text('name', ['required' => true, 'label' => trans('company.name')]) !!}
                 {!! FormField::email('email', ['required' => true, 'label' => trans('company.email')]) !!}
+                {!! FormField::text('website', ['label' => trans('company.website')]) !!}
+                {!! FormField::textarea('address', ['label' => trans('company.address')]) !!}
             </div>
             <div class="panel-footer">
                 {!! Form::submit(trans('company.update'), ['class' => 'btn btn-success']) !!}

@@ -23,8 +23,10 @@ class ManageCompaniesTest extends TestCase
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'  => 'Company 1 name',
-            'email' => 'contact@company1.com',
+            'name'    => 'Company 1 name',
+            'email'   => 'contact@company1.com',
+            'website' => 'http://company1.com',
+            'address' => 'Palm Street, Little Rock, AR',
         ], $overrides);
     }
 
@@ -73,8 +75,10 @@ class ManageCompaniesTest extends TestCase
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'  => 'Company 1 name',
-            'email' => 'contact@company1.com',
+            'name'    => 'Company 1 name',
+            'email'   => 'contact@company1.com',
+            'website' => 'http://company1.com',
+            'address' => 'Palm Street, Little Rock, AR',
         ], $overrides);
     }
 

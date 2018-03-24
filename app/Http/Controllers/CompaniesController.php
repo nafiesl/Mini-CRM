@@ -44,8 +44,10 @@ class CompaniesController extends Controller
         $this->authorize('create', new Company);
 
         $newCompany = $this->validate($request, [
-            'name'  => 'required|max:60',
-            'email' => 'required|email|max:255',
+            'name'    => 'required|max:60',
+            'email'   => 'required|email|max:255',
+            'website' => 'nullable|url|max:255',
+            'address' => 'nullable|max:255',
         ]);
 
         $newCompany['creator_id'] = auth()->id();
@@ -91,8 +93,10 @@ class CompaniesController extends Controller
         $this->authorize('update', $company);
 
         $companyData = $request->validate([
-            'name'  => 'required|max:60',
-            'email' => 'required|email|max:255',
+            'name'    => 'required|max:60',
+            'email'   => 'required|email|max:255',
+            'website' => 'nullable|url|max:255',
+            'address' => 'nullable|max:255',
         ]);
 
         $company->update($companyData);

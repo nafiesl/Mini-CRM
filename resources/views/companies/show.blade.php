@@ -17,6 +17,14 @@
                         <td>{{ trans('company.email') }}</td>
                         <td>{{ $company->email }}</td>
                     </tr>
+                    <tr>
+                        <td>{{ trans('company.website') }}</td>
+                        <td>{{ $company->website }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ trans('company.address') }}</td>
+                        <td>{{ $company->address }}</td>
+                    </tr>
                 </tbody>
             </table>
             <div class="panel-footer">
