@@ -2,9 +2,11 @@
 
 namespace Tests\Unit\Models;
 
-use App\User;
 use App\Company;
+use App\Employee;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Collection;
 use Tests\TestCase as TestCase;
 
 class CompanyTest extends TestCase
@@ -33,5 +35,15 @@ class CompanyTest extends TestCase
 
         $this->assertInstanceOf(User::class, $company->creator);
         $this->assertEquals($company->creator_id, $company->creator->id);
+    }
+
+    /** @test */
+    public function a_company_has_many_employees_relation()
+    {
+        $company = factory(Company::class)->create();
+        $employee = factory(Employee::class)->create(['company_id' => $company->id]);
+
+        $this->assertInstanceOf(Collection::class, $company->employees);
+        $this->assertInstanceOf(Employee::class, $company->employees->first());
     }
 }

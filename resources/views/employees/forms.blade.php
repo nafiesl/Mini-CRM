@@ -35,12 +35,10 @@
     <div class="panel panel-default">
         <div class="panel-heading"><h3 class="panel-title">{{ trans('employee.delete') }}</h3></div>
         <div class="panel-body">
-            <label class="control-label">{{ trans('employee.first_name') }}</label>
-            <p>{{ $editableEmployee->first_name }}</p>
-            <label class="control-label">{{ trans('employee.last_name') }}</label>
-            <p>{{ $editableEmployee->last_name }}</p>
+            <label class="control-label">{{ trans('app.name') }}</label>
+            <p>{{ $editableEmployee->first_name }} {{ $editableEmployee->last_name }}</p>
             <label class="control-label">{{ trans('employee.company') }}</label>
-            <p>{{ $editableEmployee->company_id }}</p>
+            <p>{{ $editableEmployee->company->name }}</p>
             <label class="control-label">{{ trans('employee.email') }}</label>
             <p>{{ $editableEmployee->email }}</p>
             <label class="control-label">{{ trans('employee.phone') }}</label>

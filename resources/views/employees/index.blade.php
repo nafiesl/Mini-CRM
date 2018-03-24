@@ -38,7 +38,7 @@
                     <tr>
                         <td class="text-center">{{ $employees->firstItem() + $key }}</td>
                         <td>{{ $employee->first_name }} {{ $employee->last_name }}</td>
-                        <td>{{ $employee->company_id }}</td>
+                        <td>{{ $employee->company->name }}</td>
                         <td>{{ $employee->email }}</td>
                         <td>{{ $employee->phone }}</td>
                         <td class="text-center">

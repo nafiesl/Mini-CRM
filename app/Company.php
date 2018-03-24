@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Employee;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,5 +25,10 @@ class Company extends Model
     public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
     }
 }
