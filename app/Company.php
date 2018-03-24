@@ -9,6 +9,8 @@ class Company extends Model
 {
     protected $fillable = ['name', 'email', 'logo', 'address', 'website', 'creator_id'];
 
+    protected $perPage = 10;
+
     public function nameLink()
     {
         return link_to_route('companies.show', $this->name, [$this], [

@@ -9,7 +9,7 @@ $factory->define(Company::class, function (Faker $faker) {
     return [
         'name'       => $faker->word,
         'email'      => $faker->email,
-        'website'    => $faker->url,
+        'website'    => 'https://'.$faker->domainName,
         'address'    => $faker->address,
         'creator_id' => function () {
             return factory(User::class)->create()->id;

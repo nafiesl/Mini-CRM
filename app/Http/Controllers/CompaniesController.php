@@ -16,7 +16,7 @@ class CompaniesController extends Controller
     {
         $companies = Company::where(function ($query) {
             $query->where('name', 'like', '%'.request('q').'%');
-        })->paginate(25);
+        })->paginate();
 
         return view('companies.index', compact('companies'));
     }
