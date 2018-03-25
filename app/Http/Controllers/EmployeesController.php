@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Employee;
+use App\Http\Requests\EmployeeCreateRequest;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -43,18 +44,9 @@ class EmployeesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeCreateRequest $request)
     {
-        $this->authorize('create', new Employee);
-
-        $newEmployee = $this->validate($request, [
-            'first_name' => 'required|max:60',
-            'last_name'  => 'required|max:60',
-            'company_id' => 'required|numeric|exists:companies,id',
-            'email'      => 'nullable|email|max:255',
-            'phone'      => 'nullable|max:255',
-        ]);
-
+        $newEmployee = $request->validated();
         $newEmployee['creator_id'] = auth()->id();
 
         Employee::create($newEmployee);
