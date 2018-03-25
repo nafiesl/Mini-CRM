@@ -42,7 +42,8 @@ class EmployeesController extends Controller
     /**
      * Store a newly created employee in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\EmployeeCreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(EmployeeCreateRequest $request)
@@ -58,8 +59,9 @@ class EmployeesController extends Controller
     /**
      * Update the specified employee in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Employee  $employee
+     * @param \App\Http\Requests\EmployeeUpdateRequest $request
+     * @param \App\Employee                            $employee
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(EmployeeUpdateRequest $request, Employee $employee)
@@ -77,7 +79,8 @@ class EmployeesController extends Controller
     /**
      * Remove the specified employee from storage.
      *
-     * @param  \App\Employee  $employee
+     * @param \App\Employee $employee
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Employee $employee)

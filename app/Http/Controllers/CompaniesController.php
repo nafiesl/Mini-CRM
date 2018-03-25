@@ -39,7 +39,8 @@ class CompaniesController extends Controller
     /**
      * Store a newly created company in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Http\Requests\CompanyCreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CompanyCreateRequest $request)
@@ -55,7 +56,8 @@ class CompaniesController extends Controller
     /**
      * Display the specified company.
      *
-     * @param  \App\Company  $company
+     * @param \App\Company $company
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Company $company)
@@ -72,7 +74,8 @@ class CompaniesController extends Controller
     /**
      * Show the form for editing the specified company.
      *
-     * @param  \App\Company  $company
+     * @param \App\Company $company
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Company $company)
@@ -85,8 +88,9 @@ class CompaniesController extends Controller
     /**
      * Update the specified company in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Company  $company
+     * @param \App\Http\Requests\CompanyUpdateRequest $request
+     * @param \App\Company                            $company
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(CompanyUpdateRequest $request, Company $company)
@@ -99,7 +103,8 @@ class CompaniesController extends Controller
     /**
      * Remove the specified company from storage.
      *
-     * @param  \App\Company  $company
+     * @param \App\Company $company
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Company $company)
@@ -119,6 +124,14 @@ class CompaniesController extends Controller
         return back();
     }
 
+    /**
+     * Company logo upload action.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Company             $company
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function logoUpload(Request $request, Company $company)
     {
         $request->validate([
