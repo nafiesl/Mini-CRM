@@ -4,9 +4,9 @@
 
 @section('content')
 
+@if (request('action') == 'delete' && $company)
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        @if (request('action') == 'delete' && $company)
         @can('delete', $company)
             <div class="panel panel-default">
                 <div class="panel-heading"><h3 class="panel-title">{{ trans('company.delete') }}</h3></div>
@@ -38,7 +38,11 @@
                 </div>
             </div>
         @endcan
-        @else
+    </div>
+</div>
+@else
+<div class="row">
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title">{{ trans('company.edit') }}</h3></div>
             {!! Form::model($company, ['route' => ['companies.update', $company],'method' => 'patch']) !!}
@@ -57,6 +61,8 @@
             </div>
             {!! Form::close() !!}
         </div>
+    </div>
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title">{{ trans('company.logo_upload') }}</h3></div>
             <div class="panel-body">

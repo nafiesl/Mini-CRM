@@ -5,7 +5,7 @@
     {!! FormField::text('last_name', ['required' => true, 'label' => trans('employee.last_name')]) !!}
     {!! FormField::select('company_id', $companyList, ['required' => true, 'label' => trans('employee.company'), 'placeholder' => trans('company.select')]) !!}
     {!! FormField::email('email', ['label' => trans('employee.email')]) !!}
-    {!! FormField::text('phone', ['label' => trans('employee.phone')]) !!}\
+    {!! FormField::text('phone', ['label' => trans('employee.phone')]) !!}
     {!! Form::submit(trans('employee.create'), ['class' => 'btn btn-success']) !!}
     {{ link_to_route('employees.index', trans('app.cancel'), [], ['class' => 'btn btn-default']) }}
     {!! Form::close() !!}
@@ -18,7 +18,7 @@
     {!! FormField::text('last_name', ['required' => true, 'label' => trans('employee.last_name')]) !!}
     {!! FormField::select('company_id', $companyList, ['required' => true, 'label' => trans('employee.company'), 'placeholder' => trans('company.select')]) !!}
     {!! FormField::email('email', ['label' => trans('employee.email')]) !!}
-    {!! FormField::text('phone', ['label' => trans('employee.phone')]) !!}\
+    {!! FormField::text('phone', ['label' => trans('employee.phone')]) !!}
     @if (request('q'))
         {{ Form::hidden('q', request('q')) }}
     @endif
