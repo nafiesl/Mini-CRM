@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Http\Requests\CompanyCreateRequest;
+use App\Http\Requests\CompanyUpdateRequest;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -88,18 +89,9 @@ class CompaniesController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyUpdateRequest $request, Company $company)
     {
-        $this->authorize('update', $company);
-
-        $companyData = $request->validate([
-            'name'    => 'required|max:60',
-            'email'   => 'required|email|max:255',
-            'website' => 'nullable|url|max:255',
-            'address' => 'nullable|max:255',
-        ]);
-
-        $company->update($companyData);
+        $company->update($request->validated());
 
         return redirect()->route('companies.show', $company);
     }
