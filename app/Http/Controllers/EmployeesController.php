@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Employee;
 use App\Http\Requests\EmployeeCreateRequest;
+use App\Http\Requests\EmployeeUpdateRequest;
 use Illuminate\Http\Request;
 
 class EmployeesController extends Controller
@@ -61,21 +62,14 @@ class EmployeesController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeUpdateRequest $request, Employee $employee)
     {
         $this->authorize('update', $employee);
 
-        $employeeData = $this->validate($request, [
-            'first_name' => 'required|max:60',
-            'last_name'  => 'required|max:60',
-            'company_id' => 'required|numeric|exists:companies,id',
-            'email'      => 'nullable|email|max:255',
-            'phone'      => 'nullable|max:255',
-        ]);
+        $employeeData = $request->validated();
+        $employee->update($employeeData);
 
         $routeParam = request()->only('page', 'q');
-
-        $employee->update($employeeData);
 
         return redirect()->route('employees.index', $routeParam);
     }
