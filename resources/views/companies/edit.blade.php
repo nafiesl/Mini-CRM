@@ -57,6 +57,18 @@
             </div>
             {!! Form::close() !!}
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">{{ trans('company.logo_upload') }}</h3></div>
+            <div class="panel-body">
+                @if ($company->logo && is_file(public_path('storage/'.$company->logo)))
+                {{ Html::image('storage/'.$company->logo, $company->name, ['style' => 'width:100%']) }}
+                @endif
+                {{ Form::open(['route' => ['companies.logo-upload', $company], 'method' => 'patch', 'files' => true]) }}
+                {!! FormField::file('logo', ['label' => false]) !!}
+                {{ Form::submit(trans('company.upload_logo'), ['class' => 'btn btn-primary']) }}
+                {{ Form::close() }}
+            </div>
+        </div>
     </div>
 </div>
 @endif

@@ -20,6 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::patch('companies/{company}/logo-upload', [
+        'as'   => 'companies.logo-upload',
+        'uses' => 'CompaniesController@logoUpload',
+    ]);
     Route::resource('companies', 'CompaniesController');
+
     Route::resource('employees', 'EmployeesController');
 });

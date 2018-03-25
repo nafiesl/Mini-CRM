@@ -29,4 +29,8 @@ return [
     'email'   => 'Email',
     'website' => 'Website',
     'address' => 'Address',
+
+    // Logo
+    'logo_upload' => 'Company Logo Upload',
+    'upload_logo' => 'Upload new Logo',
 ];

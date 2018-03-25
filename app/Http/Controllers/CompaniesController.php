@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
+use Storage;
 
 class CompaniesController extends Controller
 {
@@ -123,6 +124,24 @@ class CompaniesController extends Controller
         if (request('company_id') == $company->id && $company->delete()) {
             return redirect()->route('companies.index', $routeParam);
         }
+
+        return back();
+    }
+
+    public function logoUpload(Request $request, Company $company)
+    {
+        $request->validate([
+            'logo' => 'required|image|dimensions:min_width=100,min_height=100',
+        ]);
+
+        $disk = env('APP_ENV') == 'testing' ? 'avatars' : 'public';
+
+        if (Storage::disk($disk)->exists($company->logo)) {
+            Storage::disk($disk)->delete($company->logo);
+        }
+
+        $company->logo = $request->logo->store('', $disk);
+        $company->save();
 
         return back();
     }
