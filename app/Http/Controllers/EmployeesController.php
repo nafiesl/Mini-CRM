@@ -18,13 +18,17 @@ class EmployeesController extends Controller
         $editableEmployee = null;
         $companyList = Company::pluck('name', 'id');
 
-        $employees = Employee::where(function ($query) {
+        $employeeQuery = Employee::where(function ($query) {
             $searchQuery = request('q');
             $query->where('first_name', 'like', '%'.$searchQuery.'%');
             $query->orWhere('last_name', 'like', '%'.$searchQuery.'%');
-        })
-            ->with('company')
-            ->paginate();
+        });
+
+        if ($companyId = request('company_id')) {
+            $employeeQuery->where('company_id', $companyId);
+        }
+
+        $employees = $employeeQuery->with('company')->paginate();
 
         if (in_array(request('action'), ['edit', 'delete']) && request('id') != null) {
             $editableEmployee = Employee::find(request('id'));

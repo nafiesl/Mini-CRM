@@ -3,7 +3,7 @@
     {!! Form::open(['route' => 'employees.store']) !!}
     {!! FormField::text('first_name', ['required' => true, 'label' => trans('employee.first_name')]) !!}
     {!! FormField::text('last_name', ['required' => true, 'label' => trans('employee.last_name')]) !!}
-    {!! FormField::select('company_id', $companyList, ['required' => true, 'label' => trans('employee.company')]) !!}
+    {!! FormField::select('company_id', $companyList, ['required' => true, 'label' => trans('employee.company'), 'placeholder' => trans('company.select')]) !!}
     {!! FormField::email('email', ['label' => trans('employee.email')]) !!}
     {!! FormField::text('phone', ['label' => trans('employee.phone')]) !!}\
     {!! Form::submit(trans('employee.create'), ['class' => 'btn btn-success']) !!}
@@ -16,7 +16,7 @@
     {!! Form::model($editableEmployee, ['route' => ['employees.update', $editableEmployee],'method' => 'patch']) !!}
     {!! FormField::text('first_name', ['required' => true, 'label' => trans('employee.first_name')]) !!}
     {!! FormField::text('last_name', ['required' => true, 'label' => trans('employee.last_name')]) !!}
-    {!! FormField::select('company_id', $companyList, ['required' => true, 'label' => trans('employee.company')]) !!}
+    {!! FormField::select('company_id', $companyList, ['required' => true, 'label' => trans('employee.company'), 'placeholder' => trans('company.select')]) !!}
     {!! FormField::email('email', ['label' => trans('employee.email')]) !!}
     {!! FormField::text('phone', ['label' => trans('employee.phone')]) !!}\
     @if (request('q'))

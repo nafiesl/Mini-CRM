@@ -17,7 +17,8 @@
         <div class="panel panel-default table-responsive">
             <div class="panel-heading">
                 {{ Form::open(['method' => 'get','class' => 'form-inline']) }}
-                {!! FormField::text('q', ['value' => request('q'), 'label' => trans('employee.search'), 'class' => 'input-sm']) !!}
+                {!! FormField::select('company_id', $companyList, ['label' => trans('employee.search'), 'placeholder' => trans('company.select'), 'class' => 'input-sm']) !!}
+                {!! FormField::text('q', ['value' => request('q'), 'label' => false, 'class' => 'input-sm']) !!}
                 {{ Form::submit(trans('employee.search'), ['class' => 'btn btn-sm']) }}
                 {{ link_to_route('employees.index', trans('app.reset')) }}
                 {{ Form::close() }}

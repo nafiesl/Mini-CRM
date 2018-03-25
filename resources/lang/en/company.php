@@ -6,6 +6,7 @@ return [
     'list'          => 'Company List',
     'search'        => 'Search Company',
     'detail'        => 'Company Detail',
+    'select'        => 'Select a Company',
     'not_found'     => 'Company not found.',
     'empty'         => 'Company is empty.',
     'back_to_show'  => 'Back to Company Detail',
