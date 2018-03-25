@@ -33,4 +33,7 @@ return [
     // Logo
     'logo_upload' => 'Company Logo Upload',
     'upload_logo' => 'Upload new Logo',
+
+    // Relations
+    'employees' => 'Company Employees',
 ];

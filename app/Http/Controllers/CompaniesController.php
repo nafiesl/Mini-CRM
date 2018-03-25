@@ -66,7 +66,13 @@ class CompaniesController extends Controller
      */
     public function show(Company $company)
     {
-        return view('companies.show', compact('company'));
+        $employees = $company->employees()->where(function ($query) {
+            $searchQuery = request('q');
+            $query->where('first_name', 'like', '%'.$searchQuery.'%');
+            $query->orWhere('last_name', 'like', '%'.$searchQuery.'%');
+        })->paginate();
+
+        return view('companies.show', compact('company', 'employees'));
     }
 
     /**
