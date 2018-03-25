@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\Http\Requests\CompanyCreateRequest;
+use App\Http\Requests\CompanyLogoUploadRequest;
 use App\Http\Requests\CompanyUpdateRequest;
 use Illuminate\Http\Request;
 use Storage;
@@ -127,17 +128,13 @@ class CompaniesController extends Controller
     /**
      * Company logo upload action.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Company             $company
+     * @param \App\Http\Requests\CompanyLogoUploadRequest $request
+     * @param \App\Company                                $company
      *
      * @return \Illuminate\Http\Response
      */
-    public function logoUpload(Request $request, Company $company)
+    public function logoUpload(CompanyLogoUploadRequest $request, Company $company)
     {
-        $request->validate([
-            'logo' => 'required|image|dimensions:min_width=100,min_height=100',
-        ]);
-
         $disk = env('APP_ENV') == 'testing' ? 'avatars' : 'public';
 
         if (Storage::disk($disk)->exists($company->logo)) {
