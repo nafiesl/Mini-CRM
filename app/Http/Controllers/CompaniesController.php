@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Http\Requests\CompanyCreateRequest;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -40,17 +41,9 @@ class CompaniesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyCreateRequest $request)
     {
-        $this->authorize('create', new Company);
-
-        $newCompany = $this->validate($request, [
-            'name'    => 'required|max:60',
-            'email'   => 'required|email|max:255',
-            'website' => 'nullable|url|max:255',
-            'address' => 'nullable|max:255',
-        ]);
-
+        $newCompany = $request->validated();
         $newCompany['creator_id'] = auth()->id();
 
         $company = Company::create($newCompany);
