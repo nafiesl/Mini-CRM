@@ -36,8 +36,9 @@ This project built with Laravel 5.5.
 6. Create **database on MySQL** or **SQLite**
 7. **Set database credentials** on `.env` file
 8. `$ php artisan migrate --seed`
-9. `$ php artisan serve`
-10. Login with :
+9. `$ php artisan storage:link`
+10. `$ php artisan serve`
+11. Login with :
     - email : `admin@admin.com`
     - password : `password`
 
